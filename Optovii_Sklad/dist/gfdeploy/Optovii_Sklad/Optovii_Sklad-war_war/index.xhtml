@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="resources/css/style.css"></link>
+        <title>ГЛАВНАЯ</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h2>
+                    <h:outputLabel value="МЕНЮ"/>
+                </h2>      
+                <c:choose>
+                    <c:when class="text-lign" test="${!empty request.remoteUser}">
+                        <h4 class="text-align">Вы зашли как - #{request.remoteUser}</h4>
+                    </c:when>
+                </c:choose>
+                <h:commandButton value="Войти" action="login.xhtml" />
+                <br></br>
+                <h:commandButton value="Добавить материал" action="/Add/AddMat.xhtml" />
+                <br></br>
+                <h:commandButton value="Добавить заявку"  action="/Add/AddApp.xhtml"/>
+                <br></br>
+                <h:commandButton value="Добавить заявку поставщикам"  action="/Add/AddAppProv.xhtml"/>
+                <br></br>
+                <h:commandButton value="Просмотр материала" action="/All/AllMaterial.xhtml" />  
+                <br></br>
+                <h:commandButton value="Просмотр заявок" action="/All/AllApp.xhtml"   />
+                <br></br>
+                <h:commandButton value="Просмотр заявок поставщикам" action="/All/AllAppProv.xhtml"   />
+                <br></br>
+                <h:commandButton value="Поставщики" action="/All/AllProv.xhtml"   />
+                <br></br>
+                <h:commandButton value="Просмотр табеля" action="/All/AllTs.xhtml" /> 
+                <br></br>
+                <h:commandButton value="Выйти" action="#{AddManagedBean.logout()}" rendered="true"/>
+                <br></br>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

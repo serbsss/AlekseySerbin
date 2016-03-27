@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h2>
+                    <h:outputLabel value="Материалы"/>
+                </h2>                                                                    
+                <ace:dataTable value="#{MaterialBean.selectMaterial()}"
+                                   var="material"
+                                   stateMap="#{MaterialBean.stateMap}"
+                                   selectionMode="multiple">
+                       <ace:column headerText="idMat" sortBy="#{material.idMat}" rendered="false"
+                                    filterBy="#{material.idMat}" filterMatchMode="contains">
+                            <h:outputText value="#{material.idMat}"/>
+                        </ace:column>
+                    
+                     <ace:column headerText="Название" sortBy="#{material.name}"
+                                    filterBy="#{material.name}" filterMatchMode="contains">
+                            <h:outputText value="#{material.name}"/>
+                        </ace:column>
+                       
+                        <ace:column headerText="Номер" sortBy="#{material.number}"
+                                    filterBy="#{material.number}" filterMatchMode="contains">
+                            <h:outputText value="#{material.number}"/>
+                        </ace:column>   
+                    
+                    <ace:column headerText="Количество" sortBy="#{material.quantity}"
+                                    filterBy="#{material.quantity}" filterMatchMode="contains">
+                            <h:outputText value="#{material.quantity}"/>
+                        </ace:column>   
+                    <ace:column headerText="">
+                        <h:commandLink action="#{MaterialBean.editMaterial(material.idMat)}" value="Изменить" rendered="#{request.isUserInRole('admin')}"/>
+                        </ace:column> 
+                    </ace:dataTable>  
+                <h:commandButton value="Назад" action="/index.xhtml"/>
+                <h:commandButton value="Удалить Материал" actionListener="#{MaterialBean.actionListener}" rendered="#{request.isUserInRole('admin')}"/> 
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

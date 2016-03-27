@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>ТАБЕЛЬ</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h2>
+                    <h:outputLabel value="Добавить информацию в табель"/>
+                </h2>
+                <table>
+                   
+                    <tr>
+                        <th align="left">
+                            <h:outputLabel value="Материал" for="material"/>
+                        </th>
+                        <th>
+                            <h:inputText id="material" value="#{AddTimesHeetBean.timesHeet.material}" required="true">
+                            </h:inputText>
+                        </th>
+                        <th>
+                            <h:message for="material" style="color:red" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th align="left">
+                            <h:outputLabel value="Количество" for="quantity"/>
+                        </th>
+                        <th>
+                            <h:inputText id="quantity" value="#{AddTimesHeetBean.timesHeet.quantity}" required="true">
+                            </h:inputText>
+                        </th>
+                        <th>
+                            <h:message for="quantity" style="color:red" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th align="left">
+                            <h:outputLabel value="Форма" for="form"/>
+                        </th>
+                        <th>
+                            <h:inputText id="form" value="#{AddTimesHeetBean.timesHeet.form}" required="true">
+                            </h:inputText>
+                        </th>
+                        <th>
+                            <h:message for="form" style="color:red" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th align="left">
+                            <h:outputLabel value="Дата" for="Date"/>
+                        </th>
+                        <th>
+                            <h:inputText id="Date" value="#{AddTimesHeetBean.timesHeet.date}" required="true"> 
+                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </h:inputText>
+                        </th>
+                        <th>
+                            <h:message for="Date" style="color:red" />
+                        </th>
+                    </tr>                              
+                    <tr>
+                        <th></th>
+                        <th align="right">
+                            <h:commandButton value="Изменить" action="#{AddTimesHeetBean.editTs(TimesHeetBean.editTs)}"/>
+                        </th>
+                    </tr>
+                </table>
+                
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

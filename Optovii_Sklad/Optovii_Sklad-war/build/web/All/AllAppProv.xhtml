@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>Заявка</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h2>
+                    <h:outputLabel value="Заявки для поставщиков"/>
+                </h2>                                                                    
+                <ace:dataTable value="#{AppProvBean.selectAppProvider()}"
+                               var="AppProvider"
+                               stateMap="#{AppProvBean.stateMap}"
+                               selectionMode="multiple">
+                    <ace:column headerText="idAppProv" sortBy="#{AppProvider.idAppProv}" rendered="false"
+                                filterBy="#{AppProvider.idAppProv}" filterMatchMode="contains">
+                        <h:outputText value="#{AppProvider.idAppProv}"/>
+                    </ace:column>
+
+                    <ace:column headerText="Название поставщика" sortBy="#{AppProvider.nameProvider}"
+                                filterBy="#{AppProvider.nameProvider}" filterMatchMode="contains">
+                        <h:outputText value="#{AppProvider.nameProvider}"/>
+                    </ace:column>
+
+                    <ace:column headerText="Материал" sortBy="#{AppProvider.material}"
+                                filterBy="#{AppProvider.material}" filterMatchMode="contains">
+                        <h:outputText value="#{AppProvider.material}"/>
+                    </ace:column> 
+                    <ace:column headerText="Количество" sortBy="#{AppProvider.quantity}"
+                                filterBy="#{AppProvider.quantity}" filterMatchMode="contains">
+                        <h:outputText value="#{AppProvider.quantity}"/>
+                    </ace:column>   
+
+                    <ace:column headerText="Общая сумма" sortBy="#{AppProvider.summ}"
+                                filterBy="#{AppProvider.summ}" filterMatchMode="contains">
+                        <h:outputText value="#{AppProvider.summ}"/>
+                    </ace:column> 
+                  
+                    <ace:column headerText="">
+                        <h:commandLink action="#{AppProvBean.editAppProv(AppProvider.idAppProv)}" value="Изменить"/>
+                    </ace:column> 
+                    <ace:column headerText="">
+                        <h:commandButton value="Принять" action="#{AppProvBean.Save(Application.material, Application.quantity, Application.form_app, Application.fio)}"/>
+                    </ace:column>
+                </ace:dataTable>  
+                <h:commandButton value="Назад" action="/index.xhtml"/>
+                <h:commandButton value="Удалить заявку" actionListener="#{AppProvBean.actionListener}"/>
+
+
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

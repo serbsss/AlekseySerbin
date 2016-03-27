@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>Заявка</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h2>
+                    <h:outputLabel value="Заявки"/>
+                </h2>                                                                    
+                <ace:dataTable value="#{ApplicationBean.selectApplication()}"
+                                   var="Application"
+                                   stateMap="#{ApplicationBean.stateMap}"
+                                   selectionMode="multiple">
+                       <ace:column headerText="idApplication" sortBy="#{Application.idApplication}" rendered="false"
+                                    filterBy="#{Application.idApplication}" filterMatchMode="contains">
+                            <h:outputText value="#{Application.idApplication}"/>
+                        </ace:column>
+                    
+                     <ace:column headerText="Материал" sortBy="#{Application.material}"
+                                    filterBy="#{Application.material}" filterMatchMode="contains">
+                            <h:outputText value="#{Application.material}"/>
+                        </ace:column>
+                       
+                        <ace:column headerText="Количество" sortBy="#{Application.quantity}"
+                                    filterBy="#{Application.quantity}" filterMatchMode="contains">
+                            <h:outputText value="#{Application.quantity}"/>
+                        </ace:column>   
+                    <ace:column headerText="ФИО" sortBy="#{Application.fio}"
+                                    filterBy="#{Application.fio}" filterMatchMode="contains">
+                            <h:outputText value="#{Application.fio}"/>
+                        </ace:column> 
+                    <ace:column headerText="Телефон" sortBy="#{Application.phone}"
+                                    filterBy="#{Application.phone}" filterMatchMode="contains">
+                            <h:outputText value="#{Application.phone}"/>
+                        </ace:column> 
+                    <ace:column headerText="Форма" sortBy="#{Application.form_app}"
+                                    filterBy="#{Application.form_app}" filterMatchMode="contains">
+                            <h:outputText value="#{Application.form_app}"/>
+                        </ace:column> 
+                    <ace:column headerText="">
+                        <h:commandLink action="#{ApplicationBean.editApplication(Application.idApplication)}" value="Изменить"/>
+                        </ace:column> 
+                     <ace:column headerText="">
+                     <h:commandButton value="Принять" action="#{Bean.Save(Application.material, Application.quantity, Application.form_app, Application.fio)}" rendered="#{request.isUserInRole('moder')}" />
+                     </ace:column>
+                    </ace:dataTable>  
+                <h:commandButton value="Назад" action="/index.xhtml"/>
+                <h:commandButton value="Удалить заявку" actionListener="#{ApplicationBean.actionListener}"/>
+                
+               
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

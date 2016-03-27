@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Поставщики</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h2>
+                    <h:outputLabel value="Поставщики"/>
+                </h2>
+                <table>
+                   
+                    <tr>
+                        <th align="left">
+                            <h:outputLabel value="Название поставщика" for="material"/>
+                        </th>
+                        <th>
+                            <h:inputText id="nameProvider" value="#{AddProviderBean.provider.nameProvider}" required="true">
+                            </h:inputText>
+                        </th>
+                        <th>
+                            <h:message for="nameProvider" style="color:red" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th align="left">
+                            <h:outputLabel value="Материал" for="quantity"/>
+                        </th>
+                        <th>
+                            <h:inputText id="material" value="#{AddProviderBean.provider.material}" required="true"> </h:inputText>
+                        </th>
+                        <th>
+                            <h:message for="material" style="color:red" />
+                        </th>
+                    </tr>   
+                     <tr>
+                        <th align="left">
+                            <h:outputLabel value="Цена" for="price"/>
+                        </th>
+                        <th>
+                            <h:inputText id="price" value="#{AddProviderBean.provider.price}" required="true"> </h:inputText>
+                        </th>
+                        <th>
+                            <h:message for="price" style="color:red" />
+                        </th>
+                    </tr>        
+
+                </table>
+                <tr>
+                        <th></th>
+                        <th align="right">
+                            <h:commandButton value="Добавить" action="#{AddProviderBean.addNewProv()}"/>
+                        </th>
+                    </tr>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
